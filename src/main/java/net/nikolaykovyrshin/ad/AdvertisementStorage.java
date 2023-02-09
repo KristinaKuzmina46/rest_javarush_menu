@@ -1,0 +1,31 @@
+package net.nikolaykovyrshin.ad;
+
+import java.util.LinkedList;
+import java.util.List;
+
+public class AdvertisementStorage {
+    private static class InstanceHolder {
+        private static final AdvertisementStorage ourInstance = new AdvertisementStorage();
+    }
+
+    public static AdvertisementStorage getInstance() {
+        return InstanceHolder.ourInstance;
+    }
+
+    private final List<Advertisement> videos = new LinkedList<>();
+
+    private AdvertisementStorage () {
+        Object someContent = new Object();
+        videos.add(new Advertisement(someContent, "First video", 5000, 100, 3 * 60));
+        videos.add(new Advertisement(someContent, "Second video", 100, 10, 15 * 60));
+        videos.add(new Advertisement(someContent, "Third video", 400, 2, 10 * 60));
+    }
+
+    public List<Advertisement> list() {
+        return videos;
+    }
+
+    public void add(Advertisement advertisement) {
+        videos.add(advertisement);
+    }
+}
